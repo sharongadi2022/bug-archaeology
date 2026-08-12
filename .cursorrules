@@ -62,6 +62,21 @@ Do not compromise on these without explicitly raising the conflict first.
 
 ---
 
+## Git identity
+
+All commits on this project are authored and committed as:
+
+```
+Sharon <186576786+sharongadi2022@users.noreply.github.com>
+```
+
+GitHub account: `sharongadi2022`. This is set **repo-local only** (`git config user.name` /
+`user.email` inside this repo, never `--global`) — the machine this project is developed on
+has other projects under a different identity. Do not guess a different name or email for
+commits here, and do not set this globally.
+
+---
+
 ## Build order
 
 See `PLAN_PART_1_WHAT.md` for full detail and exit criteria. Do not skip ahead; confirm the
