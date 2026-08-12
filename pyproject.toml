@@ -18,13 +18,12 @@ dependencies = [
     "pydantic>=2.9.0",
     "python-dotenv>=1.0.1",
     "tqdm>=4.66.0",
+    # parsing (Phase 0 decision, specific #3): tree-sitter + the official
+    # tree-sitter-python grammar binding. NOT tree-sitter-languages — it pins
+    # an old tree-sitter core and is unmaintained against current releases.
+    "tree-sitter>=0.23.0",
+    "tree-sitter-python>=0.23.0",
 ]
-
-# tree-sitter is intentionally NOT listed yet. Decided (Phase 0, specific #3):
-# tree-sitter + the official tree-sitter-python grammar binding, not
-# tree-sitter-languages (unmaintained against current tree-sitter releases).
-# Added in Phase 2 so a C-extension install failure never blocks Phase 0's
-# exit criterion.
 
 [project.optional-dependencies]
 dev = [
