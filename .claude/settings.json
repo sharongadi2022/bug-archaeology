@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if echo \"$CLAUDE_FILE_PATHS\" | grep -q '\\.py$'; then .venv/bin/ruff check --fix $CLAUDE_FILE_PATHS 2>&1 | tail -20; .venv/bin/ruff format $CLAUDE_FILE_PATHS 2>&1 | tail -5; fi"
+          }
+        ]
+      }
+    ]
+  }
+}
