@@ -46,7 +46,6 @@ pip install -r requirements.txt
 cp .env.example .env
 uvicorn app.main:app --reload
 ```
-API docs: http://localhost:8000/docs
 
 ### 2. Frontend
 ```bash
