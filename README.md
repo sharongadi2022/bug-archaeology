@@ -4,6 +4,8 @@
 
 Bug Archaeology is a small, working RAG assistant for exploring repository history. It turns commits, pull requests, issues and code into searchable evidence, then answers questions with source links.
 
+Live demo and project walkthrough: https://sharongadi2022.github.io/bug-archaeology/
+
 ## What it does
 - Ingest repository history from the GitHub REST API (or use the included sample dataset).
 - Split each source into searchable chunks while keeping metadata such as source type, date, author and URL.
