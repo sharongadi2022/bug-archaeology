@@ -1,0 +1,5 @@
+# Optional semantic retrieval extras. Install only if you want local embeddings + ChromaDB.
+-r requirements.txt
+langchain-chroma==0.2.2
+langchain-huggingface==0.1.2
+sentence-transformers==3.4.1
