@@ -1,0 +1,56 @@
+[
+  {
+    "id": "commit-a1",
+    "kind": "commit",
+    "title": "Reduce payment retry limit to prevent request lockups",
+    "text": "Changed retry_limit from 10 to 3. The payment provider began throttling requests after repeated failures. Limiting retries reduced long waits and prevented a single checkout from blocking the request worker.",
+    "url": "https://github.com/example/shop/commit/a1",
+    "date": "2024-02-18",
+    "author": "Maya Chen"
+  },
+  {
+    "id": "pr-142",
+    "kind": "pull request",
+    "title": "PR #142: Make payment retries bounded",
+    "text": "Discussion: We saw checkout requests remain open while the provider returned repeated 429 responses. The team agreed to cap retries at 3 and use exponential backoff. This keeps the user request bounded and makes failures visible to the caller.",
+    "url": "https://github.com/example/shop/pull/142",
+    "date": "2024-02-17",
+    "author": "Payments team"
+  },
+  {
+    "id": "issue-88",
+    "kind": "issue",
+    "title": "Issue #88: Checkout hangs after repeated payment failures",
+    "text": "Users reported checkout spinning for a long time when the payment API was unavailable or rate limited. Investigation traced the delay to repeated retries with no effective upper bound.",
+    "url": "https://github.com/example/shop/issues/88",
+    "date": "2024-02-14",
+    "author": "Support"
+  },
+  {
+    "id": "commit-b7",
+    "kind": "commit",
+    "title": "Add cache invalidation after profile update",
+    "text": "Clear the profile cache after a successful profile write. Previously the API returned stale profile data until the cache TTL expired.",
+    "url": "https://github.com/example/shop/commit/b7",
+    "date": "2024-03-03",
+    "author": "Arjun Rao"
+  },
+  {
+    "id": "issue-103",
+    "kind": "issue",
+    "title": "Issue #103: Updated profile still shows old values",
+    "text": "A user can save a new display name, but the profile endpoint sometimes returns the old value. The database write succeeds; the cached response is not refreshed.",
+    "url": "https://github.com/example/shop/issues/103",
+    "date": "2024-03-01",
+    "author": "QA"
+  },
+  {
+    "id": "code-1",
+    "kind": "code",
+    "title": "payments/retry.py — retry_payment",
+    "text": "def retry_payment(call, retry_limit=3):\n    for attempt in range(retry_limit):\n        try:\n            return call()\n        except RateLimitError:\n            wait_with_backoff(attempt)\n    raise PaymentUnavailable()",
+    "url": "https://github.com/example/shop/blob/main/payments/retry.py",
+    "date": "2024-02-18",
+    "author": "Maya Chen"
+  }
+]
