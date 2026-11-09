@@ -1,27 +1,7 @@
-# Python
 __pycache__/
 *.py[cod]
-*.egg-info/
 .venv/
-venv/
-
-# Environment secrets — NEVER commit this
 .env
-
-# Project data (large, regenerable)
-data/
-*.db
-*.sqlite3
-.lancedb/
-lancedb/
-
-# Tooling caches
+chroma_db/
 .pytest_cache/
-.ruff_cache/
-.coverage
-htmlcov/
-
-# Editors / OS
-.vscode/
-.idea/
 .DS_Store
