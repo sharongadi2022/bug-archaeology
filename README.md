@@ -27,7 +27,7 @@ flowchart LR
 
 ## Stack
 - Backend: Python, FastAPI, Pydantic
-- Retrieval: ChromaDB + sentence-transformers (optional local vector mode)
+- Retrieval: keyword baseline by default; ChromaDB + sentence-transformers for optional local vector mode
 - Demo fallback: lightweight keyword retrieval over included sample records
 - LLM: optional Ollama endpoint; otherwise a transparent extractive answer from retrieved evidence
 - Frontend: React + Vite
@@ -61,7 +61,7 @@ Set `GITHUB_TOKEN` and `GITHUB_REPO=owner/name` in `backend/.env`, then call:
 ```bash
 curl -X POST http://localhost:8000/ingest
 ```
-The token is optional for public repositories, but recommended to avoid low API rate limits.
+The token is optional for public repositories, but recommended to avoid low API rate limits.\n\nFor semantic vector retrieval, install the optional dependencies with `pip install -r requirements-vector.txt`, then set `USE_CHROMA=true` in `.env`. This downloads a local embedding model the first time it runs.
 
 ## Example questions
 - Why was the payment retry limit reduced?
@@ -89,5 +89,5 @@ frontend/
   vite.config.js
 ```
 
-## Current scope
+## Frontend demo deployment\nA GitHub Actions workflow builds and deploys the frontend to GitHub Pages on pushes to `main`. In the repository, open **Settings → Pages** and select **GitHub Actions** as the build and deployment source if it is not already selected. Once the workflow succeeds, the site is available at `https://sharongadi2022.github.io/bug-archaeology/`. The hosted page runs in sample mode; run the backend locally to connect live ingestion and API answers.\n\n## Current scope
 This is an interview-sized prototype: one repository at a time, a compact ingestion pipeline, simple retrieval and cited answers. For a production deployment, add background jobs, incremental sync checkpoints, access control, evaluation datasets and monitoring.
